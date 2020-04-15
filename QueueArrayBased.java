@@ -30,12 +30,8 @@ public class QueueArrayBased implements IQueue, IArrayBased
 		
 		numOfElements++;
 		
-		if(numOfElements == 1)
-			rear = front;
-		else
-			rear = (rear+1)%size;
-		
 		elements[rear] = item;
+		rear = (rear+1)%size;
 	}
 
 
@@ -49,9 +45,7 @@ public class QueueArrayBased implements IQueue, IArrayBased
 		Object data = elements[front];
 		elements[front] = null;
 		
-		if(numOfElements != 0)
-			front = (front+1)%size;
-		
+		front = (front + 1)%size;
 		return data;
 	}
 
@@ -71,14 +65,8 @@ public class QueueArrayBased implements IQueue, IArrayBased
 		if(isEmpty())
 			System.out.print("Queue is Empty");
 		
-		int n = size(), i = front;
-		
-		while(n != 0)
-		{
+		for(int i = front, q =0;q < size();i=(i+1)%size, q++)
 			System.out.print((int)elements[i] + " ");
-			i =(i+1)%this.size;
-			n--;
-		}
 					
 		System.out.println();
 	}
